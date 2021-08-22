@@ -1,31 +1,37 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include "push_swap.h"
 #include "libft.h"
 
-typedef struct	s_list {
-    int 	value;
-    struct s_list	*next;
-    struct s_list	*prev;
-} t_list;
-
-void	init_head(t_list *head)
+void    ft_init_head(t_list *head)
 {
     head->value = 0;
     head->next = head;
     head->prev = head;
 }
 
+int ft_lstsize(t_list *head)
+{
+    int     count;
+    t_list  *p;
+
+    count = 0;
+    p = head;
+    while (p->next != head)
+    {
+        p = p->next;
+        count++;
+    }
+
+    return (count);
+}
 
 t_list *search_tail(t_list *head)
 {
     t_list *p = head;
 
     while (p->next != head)
-    {
         p = p->next;
-    }
 
-    return p;
+    return (p);
 }
 
 t_list *create_elem(int value)
@@ -72,22 +78,22 @@ void push_tail(t_list *head, t_list *elem)
 
 t_list *pop(t_list *head)
 {
-    t_list *first;
+    t_list *node1;
 
-    first = head->next;
-    if (first == head)
+    node1 = head->next;
+    if (node1 == head)
         return (NULL);
-    else if (first->next == head)
+    else if (node1->next == head)
     {
         head->next = head;
         head->prev = head;
-        return (first);
+        return (node1);
     }
     else
     {
-        head->next = first->next;
-        first->next->prev = head;
-        return (first);
+        head->next = node1->next;
+        node1->next->prev = head;
+        return (node1);
     }
 }
 
@@ -102,23 +108,12 @@ t_list *pop_tail(t_list *head)
     return (tail);
 }
 
-void swap(t_list *head)
-{
-    t_list *first;
-    t_list *second;
-
-    first = pop(head);
-    second = pop(head);
-    push(head, first);
-    push(head, second);
-}
-
 void rotate(t_list *head)
 {
-    t_list *first;
+    t_list *node1;
 
-    first = pop(head);
-    push_tail(head, first);
+    node1 = pop(head);
+   push_tail(head, node1);
 }
 
 void reverse_rotate(t_list *head)
@@ -131,11 +126,11 @@ void reverse_rotate(t_list *head)
 
 void num3_ver(t_list *head)
 {
-    int first;
-    int second;
+    int node1;
+    int node2;
     int third;
 
-    //	if (first > 
+    //	if (node1 > 
 
     //	if ();
 }
