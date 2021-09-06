@@ -1,47 +1,86 @@
 #include "push_swap.h"
 #include "libft.h"
 
+
+void show_lst(t_list *head_a, t_list *head_b)
+{
+  t_list  *pa;
+  t_list  *pb;
+
+  pa = head_a;
+  pb = head_b;
+  printf("---a---\n");
+  while(pa->next != head_a)
+  {
+    printf("%d\n", pa->value);
+    pa = pa->next;
+  }
+  printf("%d\n", pa->value);
+  printf("---b---\n");
+  while(pb->next != head_b)
+  {
+    printf("%d\n", pb->value);
+    pb = pb->next;
+  }
+  printf("%d\n", pb->value);
+}
+
+void  a_half_b(t_list *head_a, t_list *head_b)
+{
+  int *array;
+  int median;
+  t_list *p;
+
+  array = bubble_sort(change_array(head_a), ft_lstsize(head_a));
+  median = calc_median(head_a, array);
+  p = head_a->next;
+  while(p->next != head_a)
+  {
+    if(p->value > median)
+    {
+     rotate_a(head_a);
+     break;
+    }
+   push_b(head_a, head_b); 
+   p = p->next;
+  }
+  if(p->value <= median)
+    push_b(head_a, head_b);
+}
 int main(int argc, char *argv[])
 {
     t_list *head_a;
     t_list *head_b;
 
-    head_a = (t_list *)malloc(sizeof(t_list));
-    head_b = (t_list *)malloc(sizeof(t_list));
+    head_a = ft_init_head(head_a);
+    head_b = ft_init_head(head_b);
     if (!head_a || !head_b)
         return (-1);
-    //aとbのstackのheadを作成
-    init_head(head_a);
-    init_head(head_b);
     //aに引数でもらった数字を末尾からつける head->12->22->11
 
-    printf("--------------------\n");
-    printf("引数の数:%d\n", argc - 1);
     int i1 = argc - 1;
     while (i1 > 0)
     {
         push(head_a, create_elem(ft_atoi(argv[i1])));
         i1--;
     }
-    printf("--------------------\n");
-    t_list *now;
-    int i2= 0;
-    now = head_a;
-    printf("--------\n");
-    while(!(now == head_a) || !i2)
+  
+    int *array;
+    int i = 0;
+    int lstsize;
+
+    lstsize = ft_lstsize(head_a);
+    show_lst(head_a, head_b);
+    array = bubble_sort(change_array(head_a), ft_lstsize(head_a));
+    while(lstsize--)
     {
-        printf("   %d   \n", now->value);
-        //	printf("---%d---\n", i2);
-        //	printf("value[%d]\n", now->value);
-        //	printf("this[%p]\n", now);
-        //	printf("next[%p]\n", now->next);
-        //	printf("prev[%p]\n", now->prev);
-        //	printf("---%d---\n", i2);
-        i2++;
-        now = now->next;
+      printf("array[%d]=%d\n", i, array[i]);
+      i++;
     }
-    printf("   %d   \n", now->value);
-    printf("--------\n");
+    printf("median:%d\n", calc_median(head_a, array));
+    a_half_b(head_a, head_b);
+    show_lst(head_a, head_b);
     //system("leaks a.out");
     return (0);
 }
+

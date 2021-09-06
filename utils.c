@@ -1,11 +1,15 @@
 #include "push_swap.h"
 #include "libft.h"
 
-void    ft_init_head(t_list *head)
+t_list  *ft_init_head(t_list *head)
 {
-    head->value = 0;
-    head->next = head;
-    head->prev = head;
+  head = (t_list *)malloc(sizeof(t_list));
+  if (!head)
+    return (NULL);
+  head->value = 0;
+  head->next = head;
+  head->prev = head;
+  return (head);
 }
 
 int ft_lstsize(t_list *head)

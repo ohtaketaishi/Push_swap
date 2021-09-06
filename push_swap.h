@@ -6,7 +6,7 @@
 # include <unistd.h>
 # include <limits.h>
 
-typedf  struct s_list {
+typedef  struct s_list {
     int value;
     struct s_list   *next;
     struct s_list   *prev;
@@ -28,7 +28,7 @@ void reverse_rotate_a(t_list *head_a);
 void reverse_rotate_b(t_list *head_b);
 void  rreverse_rotate(t_list *head_a, t_list  *head_b);
 //utils.c
-void    ft_init_head(t_list *head);
+t_list  *ft_init_head(t_list *head);
 int ft_lstsize(t_list *head);
 t_list *search_tail(t_list *head);
 t_list *create_elem(int value);
@@ -36,4 +36,9 @@ void push(t_list *head, t_list *elem);
 void push_tail(t_list *head, t_list *elem);
 t_list *pop(t_list *head);
 t_list *pop_tail(t_list *head);
+//back_sort.c
+int *change_array(t_list  *head);
+void  bubble_swap(int *x, int *y);
+int *bubble_sort(int  array[], int array_size);
+int calc_median(t_list *head, int *array);
 #endif

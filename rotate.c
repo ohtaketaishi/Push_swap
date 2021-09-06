@@ -1,4 +1,4 @@
-#include "push_swap"
+#include "push_swap.h"
 #include "libft.h"
 
 void rotate_a(t_list *head_a)
