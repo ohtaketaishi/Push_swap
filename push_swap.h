@@ -41,4 +41,8 @@ int *change_array(t_list  *head);
 void  bubble_swap(int *x, int *y);
 int *bubble_sort(int  array[], int array_size);
 int calc_median(t_list *head, int *array);
+//quick_sort.c
+void  a_half_b(t_list *head_a, t_list *head_b);
+void  b_half_a(t_list *head_a, t_list *head_b);
+
 #endif

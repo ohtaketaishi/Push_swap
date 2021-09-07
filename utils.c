@@ -53,25 +53,29 @@ t_list *create_elem(int value)
 
 void push(t_list *head, t_list *elem)
 {
-    if (head->next == head)
-    {
-        head->next = elem;
-        head->prev = elem;
-        elem->next = head;
-        elem->prev = head;
-    }
-    else
-    {
-        t_list *now = head->next;
-        head->next = elem;
-        elem->next = now;
-        elem->prev = head;
-        now->prev = elem;
-    }
+  if (!elem)
+    return;
+  if (head->next == head)
+  {
+      head->next = elem;
+      head->prev = elem;
+      elem->next = head;
+      elem->prev = head;
+  }
+  else
+  {
+      t_list *now = head->next;
+      head->next = elem;
+      elem->next = now;
+      elem->prev = head;
+      now->prev = elem;
+  }
 }
 
 void push_tail(t_list *head, t_list *elem)
 {
+  if (!elem)
+    return;
     t_list *tail = search_tail(head);
     //headしかない時でもok
     tail->next = elem;

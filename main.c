@@ -25,28 +25,37 @@ void show_lst(t_list *head_a, t_list *head_b)
   printf("%d\n", pb->value);
 }
 
-void  a_half_b(t_list *head_a, t_list *head_b)
+void show_struct(t_list *head_a, t_list *head_b)
 {
-  int *array;
-  int median;
   t_list *p;
+  int flag = 1;
 
-  array = bubble_sort(change_array(head_a), ft_lstsize(head_a));
-  median = calc_median(head_a, array);
-  p = head_a->next;
-  while(p->next != head_a)
+  
+  printf("---a---\n");
+  p = head_a;
+  while( p != head_a || flag)
   {
-    if(p->value > median)
-    {
-     rotate_a(head_a);
-     break;
-    }
-   push_b(head_a, head_b); 
-   p = p->next;
+    printf("value:%d\n", p->value);
+    printf("own  :%p\n", p);
+    printf("next :%p\n", p->next);
+    printf("prev :%p\n", p->prev);
+    p = p->next;
+    flag = 0;
   }
-  if(p->value <= median)
-    push_b(head_a, head_b);
+  printf("---b---\n");
+  flag = 1;
+  p = head_b;
+  while( p != head_b || flag)
+  {
+    printf("value:%d\n", p->value);
+    printf("own  :%p\n", p);
+    printf("next :%p\n", p->next);
+    printf("prev :%p\n", p->prev);
+    p = p->next;
+    flag = 0;
+  }
 }
+
 int main(int argc, char *argv[])
 {
     t_list *head_a;
@@ -79,8 +88,10 @@ int main(int argc, char *argv[])
     }
     printf("median:%d\n", calc_median(head_a, array));
     a_half_b(head_a, head_b);
+    show_lst(head_a,head_b);
+    b_half_a(head_a, head_b);
     show_lst(head_a, head_b);
-    //system("leaks a.out");
+    system("leaks a.out");
     return (0);
 }
 
