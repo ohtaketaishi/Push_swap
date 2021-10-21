@@ -1,11 +1,6 @@
 #include "push_swap.h"
 #include "libft.h"
 
-//連結リストをmallocした配列に入れる関数
-//配列をバブルソートする関数
-//配列の中央値を返す関数
-//配列のk番目の最小値を返す関数
-//
 int *change_array(t_list  *head)
 {
   int *array;

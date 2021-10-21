@@ -31,9 +31,9 @@ void  rreverse_rotate(t_list *head_a, t_list  *head_b);
 t_list  *ft_init_head(t_list *head);
 int ft_lstsize(t_list *head);
 t_list *search_tail(t_list *head);
-t_list *create_elem(int value);
-void push(t_list *head, t_list *elem);
-void push_tail(t_list *head, t_list *elem);
+t_list *create_node(int value);
+void push(t_list *head, t_list *node);
+void push_tail(t_list *head, t_list *node);
 t_list *pop(t_list *head);
 t_list *pop_tail(t_list *head);
 //back_sort.c
@@ -42,7 +42,20 @@ void  bubble_swap(int *x, int *y);
 int *bubble_sort(int  array[], int array_size);
 int calc_median(t_list *head, int *array);
 //quick_sort.c
-void  a_half_b(t_list *head_a, t_list *head_b);
-void  b_half_a(t_list *head_a, t_list *head_b);
-
+void  half_a_to_b(t_list *head_a, t_list *head_b);
+void  half_b_to_a(t_list *head_a, t_list *head_b);
+int quick_sort(t_list *head_a, t_list *head_b);
+//free.c
+void    ft_lstclear(t_list *head);
+void    ft_free(int *p);
+//rule_sort.c
+void    num3_sort(t_list *head_a, t_list *head_b);
+void    num2_sort(t_list *head_a, t_list *head_b);
+void    num1_sort(t_list *head_a, t_list *head_b);
+//3num_sort.c
+void    sort_123(t_list *head_a, t_list *head_b);
+void    sort_321(t_list *head_a, t_list *head_b);
+void    sort_312(t_list  *head_a, t_list *head_b);
+void    sort_132(t_list *head_a, t_list *head_b);
+void    sort_231(t_list *head_a, t_list *head_b);
 #endif

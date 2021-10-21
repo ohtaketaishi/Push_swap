@@ -9,20 +9,18 @@ void show_lst(t_list *head_a, t_list *head_b)
 
   pa = head_a;
   pb = head_b;
-  printf("---a---\n");
+  printf("\n\n//==//== a //==//==\n");
   while(pa->next != head_a)
   {
-    printf("%d\n", pa->value);
     pa = pa->next;
+    printf("%d, ", pa->value);
   }
-  printf("%d\n", pa->value);
-  printf("---b---\n");
+  printf("\n//==//== b //==//==\n");
   while(pb->next != head_b)
   {
-    printf("%d\n", pb->value);
     pb = pb->next;
+    printf("%d, ", pb->value);
   }
-  printf("%d\n", pb->value);
 }
 
 void show_struct(t_list *head_a, t_list *head_b)
@@ -58,40 +56,65 @@ void show_struct(t_list *head_a, t_list *head_b)
 
 int main(int argc, char *argv[])
 {
+    //初期化
+    //==//==//==//==//==//==//==//==//==//==
+    //head_a head_bを確保してhead_aを引数で初期化
+    //head->引数1->引数2->引数3
     t_list *head_a;
     t_list *head_b;
-
     head_a = ft_init_head(head_a);
     head_b = ft_init_head(head_b);
     if (!head_a || !head_b)
         return (-1);
-    //aに引数でもらった数字を末尾からつける head->12->22->11
+    int i1 = 0;
+   // while (i1 < argc - 1)
+   //     push(head_a, create_node(ft_atoi(argv[argc - 1 - i1++])));
+   while (i1++ < 20)
+       push(head_a, create_node(i1));
 
-    int i1 = argc - 1;
-    while (i1 > 0)
-    {
-        push(head_a, create_elem(ft_atoi(argv[i1])));
-        i1--;
-    }
-  
+    //quick_sort
+    //==//==//==//==//==//==//==//==//==//== 
     int *array;
     int i = 0;
     int lstsize;
 
+    show_lst(head_a, head_b);
     lstsize = ft_lstsize(head_a);
-    show_lst(head_a, head_b);
     array = bubble_sort(change_array(head_a), ft_lstsize(head_a));
-    while(lstsize--)
-    {
-      printf("array[%d]=%d\n", i, array[i]);
-      i++;
-    }
-    printf("median:%d\n", calc_median(head_a, array));
-    a_half_b(head_a, head_b);
+    half_a_to_b(head_a, head_b);
     show_lst(head_a,head_b);
-    b_half_a(head_a, head_b);
-    show_lst(head_a, head_b);
-    system("leaks a.out");
+    quick_sort(head_a, head_b);
+
+    //最後に開放
+    //==//==//==//==//==//==//==//==//==//== 
+    ft_lstclear(head_a);
+    ft_lstclear(head_b);
+    //system("leaks a.out");
     return (0);
 }
+
+int quick_sort(t_list *head_a, t_list *head_b)
+{
+    int b_count;
+
+    b_count = ft_lstsize(head_b);
+    if(b_count <= 3)
+    {
+        if(b_count == 3)
+            num3_sort(head_a, head_b);
+        else if(b_count == 2)
+            num2_sort(head_a, head_b);
+        else
+            num1_sort(head_a, head_b);
+        show_lst(head_a, head_b);
+        return(b_count);
+    }
+    half_b_to_a(head_a, head_b);
+    show_lst(head_a, head_b);
+    quick_sort(head_a, head_b);
+
+    return(b_count);
+}
+
+
 

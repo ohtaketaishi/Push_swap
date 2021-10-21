@@ -38,50 +38,50 @@ t_list *search_tail(t_list *head)
     return (p);
 }
 
-t_list *create_elem(int value)
+t_list *create_node(int value)
 {
-    t_list *elem;
-    elem = (t_list *)malloc(sizeof(t_list));
-    if (!elem)
+    t_list *node;
+    node = (t_list *)malloc(sizeof(t_list));
+    if (!node)
         return(NULL);
-    elem->value = value;
-    elem->next = NULL;
-    elem->prev = NULL;
+    node->value = value;
+    node->next = NULL;
+    node->prev = NULL;
 
-    return (elem);
+    return (node);
 }
 
-void push(t_list *head, t_list *elem)
+void push(t_list *head, t_list *node)
 {
-  if (!elem)
+  if (!node)
     return;
   if (head->next == head)
   {
-      head->next = elem;
-      head->prev = elem;
-      elem->next = head;
-      elem->prev = head;
+      head->next = node;
+      head->prev = node;
+      node->next = head;
+      node->prev = head;
   }
   else
   {
       t_list *now = head->next;
-      head->next = elem;
-      elem->next = now;
-      elem->prev = head;
-      now->prev = elem;
+      head->next = node;
+      node->next = now;
+      node->prev = head;
+      now->prev = node;
   }
 }
 
-void push_tail(t_list *head, t_list *elem)
+void push_tail(t_list *head, t_list *node)
 {
-  if (!elem)
+  if (!node)
     return;
     t_list *tail = search_tail(head);
     //headしかない時でもok
-    tail->next = elem;
-    elem->next = head;
-    elem->prev = tail;
-    head->prev = elem;
+    tail->next = node;
+    node->next = head;
+    node->prev = tail;
+    head->prev = node;
 }
 
 t_list *pop(t_list *head)
