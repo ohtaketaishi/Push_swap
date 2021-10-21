@@ -77,12 +77,17 @@ int main(int argc, char *argv[])
     int *array;
     int i = 0;
     int lstsize;
+    int half_a_count;
 
     show_lst(head_a, head_b);
     lstsize = ft_lstsize(head_a);
     array = bubble_sort(change_array(head_a), ft_lstsize(head_a));
-    half_a_to_b(head_a, head_b);
+    half_a_count = half_a_to_b(head_a, head_b);
     show_lst(head_a,head_b);
+    quick_sort(head_a, head_b);
+
+    count_a_to_b(head_a, head_b, half_a_count);
+    show_lst(head_a, head_b);
     quick_sort(head_a, head_b);
 
     //最後に開放
@@ -95,25 +100,27 @@ int main(int argc, char *argv[])
 
 int quick_sort(t_list *head_a, t_list *head_b)
 {
-    int b_count;
+    int is_rule_num;
+    int last_num;
 
-    b_count = ft_lstsize(head_b);
-    if(b_count <= 3)
-    {
-        if(b_count == 3)
-            num3_sort(head_a, head_b);
-        else if(b_count == 2)
-            num2_sort(head_a, head_b);
-        else
-            num1_sort(head_a, head_b);
-        show_lst(head_a, head_b);
-        return(b_count);
-    }
-    half_b_to_a(head_a, head_b);
+    is_rule_num = ft_lstsize(head_b);
+    if (is_rule_num <= 3)
+      return (is_rule_num);
+    last_num = half_b_to_a(head_a, head_b);
     show_lst(head_a, head_b);
-    quick_sort(head_a, head_b);
+    is_rule_num = quick_sort(head_a, head_b);
 
-    return(b_count);
+    //3以下になったらソートしてaの末尾につける
+    rule_sort(head_a, head_b, is_rule_num);
+    show_lst(head_a, head_b);
+    //ここでbは空
+    count_a_to_b(head_a, head_b, last_num);
+    show_lst(head_a, head_b);
+    is_rule_num = quick_sort(head_a, head_b);
+    rule_sort(head_a, head_b, is_rule_num);
+    show_lst(head_a, head_b);
+
+    return(is_rule_num);
 }
 
 

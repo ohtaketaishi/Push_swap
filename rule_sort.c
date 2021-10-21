@@ -57,3 +57,16 @@ void    num1_sort(t_list *head_a, t_list *head_b)
     push_a(head_a, head_b);
     rotate_a(head_a);
 }
+
+void  rule_sort(t_list *head_a, t_list *head_b, int count)
+{
+      if(count <= 3)
+    {
+        if(count == 3)
+            num3_sort(head_a, head_b);
+        else if(count == 2)
+            num2_sort(head_a, head_b);
+        else
+            num1_sort(head_a, head_b);
+    }
+}
