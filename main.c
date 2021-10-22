@@ -69,8 +69,8 @@ int main(int argc, char *argv[])
     int i1 = 0;
    // while (i1 < argc - 1)
    //     push(head_a, create_node(ft_atoi(argv[argc - 1 - i1++])));
-   while (i1++ < 20)
-       push(head_a, create_node(i1));
+   while (i1++ < 42)
+     push(head_a, create_node(i1));
 
     //quick_sort
     //==//==//==//==//==//==//==//==//==//== 
@@ -86,7 +86,7 @@ int main(int argc, char *argv[])
     show_lst(head_a,head_b);
     quick_sort(head_a, head_b);
 
-    count_a_to_b(head_a, head_b, half_a_count);
+    count_a_to_b(head_a, head_b, ft_lstsize(head_a) - half_a_count);
     show_lst(head_a, head_b);
     quick_sort(head_a, head_b);
 
@@ -94,9 +94,34 @@ int main(int argc, char *argv[])
     //==//==//==//==//==//==//==//==//==//== 
     ft_lstclear(head_a);
     ft_lstclear(head_b);
-    //system("leaks a.out");
+    system("leaks a.out");
     return (0);
 }
+
+//int quick_sort(t_list *head_a, t_list *head_b)
+//{
+//    int is_rule_num;
+//    int last_num;
+//
+//    is_rule_num = ft_lstsize(head_b);
+//    if (is_rule_num <= 3)
+//      return (is_rule_num);
+//    last_num = half_b_to_a(head_a, head_b);
+//    show_lst(head_a, head_b);
+//    is_rule_num = quick_sort(head_a, head_b);
+//
+//    //3以下になったらソートしてaの末尾につける
+//    rule_sort(head_a, head_b, is_rule_num);
+//    show_lst(head_a, head_b);
+//    //ここでbは空
+//    count_a_to_b(head_a, head_b, last_num);
+//    show_lst(head_a, head_b);
+//    is_rule_num = quick_sort(head_a, head_b);
+//    rule_sort(head_a, head_b, is_rule_num);
+//    show_lst(head_a, head_b);
+//
+//    return(is_rule_num);
+//}
 
 int quick_sort(t_list *head_a, t_list *head_b)
 {
@@ -105,23 +130,18 @@ int quick_sort(t_list *head_a, t_list *head_b)
 
     is_rule_num = ft_lstsize(head_b);
     if (is_rule_num <= 3)
-      return (is_rule_num);
+    {
+      rule_sort(head_a, head_b, is_rule_num);
+      return (1);
+    }
     last_num = half_b_to_a(head_a, head_b);
     show_lst(head_a, head_b);
-    is_rule_num = quick_sort(head_a, head_b);
-
-    //3以下になったらソートしてaの末尾につける
-    rule_sort(head_a, head_b, is_rule_num);
+    quick_sort(head_a, head_b);
+//bは空
     show_lst(head_a, head_b);
-    //ここでbは空
     count_a_to_b(head_a, head_b, last_num);
-    show_lst(head_a, head_b);
-    is_rule_num = quick_sort(head_a, head_b);
-    rule_sort(head_a, head_b, is_rule_num);
+    quick_sort(head_a, head_b);
     show_lst(head_a, head_b);
 
-    return(is_rule_num);
+    return(1);
 }
-
-
-
