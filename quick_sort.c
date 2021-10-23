@@ -1,7 +1,7 @@
 #include "push_swap.h"
 #include "libft.h"
 
-int  half_a_to_b(t_list *head_a, t_list *head_b)
+int  half_a_to_b(t_list *head_a, t_list *head_b, int *operation)
 {
   int *array;
   int median;
@@ -20,19 +20,19 @@ int  half_a_to_b(t_list *head_a, t_list *head_b)
     if(p->value < median)
     {
       p = p->next;
-      push_b(head_a, head_b);
+      push_b(head_a, head_b, operation);
       count++;
     }
     else
     {
       p = p->next;
-      rotate_a(head_a);
+      rotate_a(head_a, operation);
     }
   }
   return(count);
 }
 
-int  half_b_to_a(t_list *head_a, t_list *head_b)
+int  half_b_to_a(t_list *head_a, t_list *head_b, int *operation)
 {
   int *array;
   int median;
@@ -51,44 +51,25 @@ int  half_b_to_a(t_list *head_a, t_list *head_b)
     if(p->value < median)
     {
       p = p->next;
-      rotate_b(head_b);
+      rotate_b(head_b, operation);
     }
     else
     {
       p = p->next;
-      push_a(head_a, head_b);
+      push_a(head_a, head_b, operation);
       count++;
     }
   }
   return (count);
 }
 
-void  count_a_to_b(t_list *head_a, t_list *head_b, int  count)
+void  count_a_to_b(t_list *head_a, t_list *head_b, int  count, int *operation)
 {
   int i;
 
   i = 0;
   while(i++ < count)
   {
-    push_b(head_a, head_b);
+    push_b(head_a, head_b, operation);
   }
 }
-
-//int quick_sort(t_list *head_a, t_list *head_b)
-//{
-//    b_count = ft_lstsize(head_b);
-//    if(b_count <= 3)
-//    {
-//        if(b_count == 3)
-//            3num_sort(head_a, head_b);
-//        else if(b_count == 2)
-//            2num_sort(head_a, head_b);
-//        else
-//            1num_sort(head_a, head_b);
-//        return(b_count);
-//    }
-//    half_b_to_a(head_a, head_b);
-//    quick_sort(head_a, head_b, b_count);
-//
-//    return(b_count);
-//}
