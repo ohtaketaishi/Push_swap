@@ -39,3 +39,9 @@ void    sort_231(t_list *head_a, t_list *head_b, int *operation)
     reverse_rotate_b(head_b, operation);
     sort_123(head_a, head_b, operation);
 }
+
+void    sort_213(t_list *head_a, t_list *head_b, int *operation)
+{
+  swap_b(head_b, operation);
+  sort_123(head_a, head_b, operation);
+}

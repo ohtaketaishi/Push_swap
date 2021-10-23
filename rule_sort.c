@@ -18,14 +18,17 @@ void    num3_sort(t_list *head_a, t_list *head_b, int *operation)
     if(node1 > node2 && node2 > node1)
         sort_321(head_a, head_b, operation);
     //3 1 2
-    if(node1 > node2 && node2 < node3)
+    if(node1 > node2 && node2 < node3 && node3 < node1)
         sort_312(head_a, head_b, operation);
     //1 3 2
-    if(node1 < node2 && node2 > node3)
+    if(node1 < node2 && node2 > node3 && node3 > node1)
         sort_132(head_a, head_b, operation);
     //2 3 1
-    if(node1 < node2 && node2 > node3)
+    if(node1 < node2 && node2 > node3 && node3 < node1)
         sort_231(head_a, head_b, operation);
+    //2 1 3
+    if(node1 > node2 && node2 < node3 && node3 > node1)
+      sort_213(head_a, head_b, operation);
 }
 
 void    num2_sort(t_list *head_a, t_list *head_b, int *operation)

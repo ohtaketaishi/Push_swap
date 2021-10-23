@@ -46,9 +46,10 @@ int  half_a_to_b(t_list *head_a, t_list *head_b, int *operation);
 int  half_b_to_a(t_list *head_a, t_list *head_b, int *operation);
 int quick_sort(t_list *head_a, t_list *head_b, int *operation);
 void  count_a_to_b(t_list *head_a, t_list *head_b, int count, int *operation);
+void sorting_start(t_list *head_a, t_list *head_b, int *operation);
 //free.c
-void    ft_lstclear(t_list *head);
-void    ft_free(int *p);
+void    ft_lstfree(t_list *head);
+void    ft_free(void *p1, void *p2, void *p3);
 //rule_sort.c
 void    num3_sort(t_list *head_a, t_list *head_b, int *operation);
 void    num2_sort(t_list *head_a, t_list *head_b, int *operation);
@@ -60,7 +61,17 @@ void    sort_321(t_list *head_a, t_list *head_b, int *operation);
 void    sort_312(t_list  *head_a, t_list *head_b, int *operation);
 void    sort_132(t_list *head_a, t_list *head_b, int *operation);
 void    sort_231(t_list *head_a, t_list *head_b, int *operation);
+void    sort_213(t_list *head_a, t_list *head_b, int *operation);
 //operation.c
 void  add_operation(int *operation, int num);
 void  print_operation(int *operation);
+//check_and_branch.c
+int check_num(int argc, char *argv[]);
+int check_int(char *str);
+int check_dup(t_list *head_a);
+int argv_to_lst(t_list *head_a, t_list *head_b, char *argv[], int argc);
+//main.c
+void show_lst(t_list *head_a, t_list *head_b);
+void show_struct(t_list *head_a, t_list *head_b);
+
 #endif

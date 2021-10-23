@@ -1,7 +1,7 @@
 #include "push_swap.h"
 #include "libft.h"
 
-void    ft_lstclear(t_list *head)
+void    ft_lstfree(t_list *head)
 {
     t_list  *p;
     t_list  *tmp;
@@ -12,19 +12,29 @@ void    ft_lstclear(t_list *head)
         while (p != head)
         {
             tmp = p->next;
-            free(p);
+            ft_free(p, NULL, NULL);
             p = tmp;
         }
-        free(head);
+        ft_free(head, NULL, NULL);
         head = NULL;
     }
 }
 
-void    ft_free(int *p)
+void    ft_free(void *p1, void *p2, void *p3)
 {
-    if (p)
+    if (p1)
     {
-        free(p);
-        p = NULL;
+        free(p1);
+        p1 = NULL;
+    }
+    if (p2)
+    {
+        free(p2);
+        p2 = NULL;
+    }
+    if (p3)
+    {
+        free(p3);
+        p3 = NULL;
     }
 }

@@ -14,6 +14,7 @@ void swap_a(t_list *head_a, int *operation)
     push(head_a, node1);
     push(head_a, node2);
     add_operation(operation, 1);
+    //puts("sa");
 }
 
 void swap_b(t_list *head_b, int *operation)
@@ -28,11 +29,13 @@ void swap_b(t_list *head_b, int *operation)
     push(head_b, node1);
     push(head_b, node2);
     add_operation(operation, 2);
+    //puts("sb");
 }
 
 void sswap(t_list *head_a, t_list *head_b, int *operation)
 {
   swap_a(head_a, operation);
   swap_b(head_b, operation);
-  add_operation(operation, 1);
+  add_operation(operation, 3);
+  //puts("ss");
 }
