@@ -40,5 +40,7 @@ void  print_operation(int *operation)
       write(1, "rrb, ", 5);
     else if(operation[i] == 10)
       write(1, "rrr, ", 5);
+
   }
+ printf("\n\n\n*******%d*******\n", i);
 }

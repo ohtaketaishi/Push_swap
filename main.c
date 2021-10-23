@@ -72,10 +72,10 @@ int main(int argc, char *argv[])
   ft_bzero(operation, sizeof(int) * 10000);
 
   int i1 = 0;
-   while (i1 < argc - 1)
-       push(head_a, create_node(ft_atoi(argv[argc - 1 - i1++])));
-  //while (i1++ < 42)
-    //push(head_a, create_node(i1));
+  // while (i1 < argc - 1)
+    //   push(head_a, create_node(ft_atoi(argv[argc - 1 - i1++])));
+  while (i1++ < 100)
+    push(head_a, create_node(i1));
 
   //quick_sort
   //==//==//==//==//==//==//==//==//==//== 
