@@ -35,11 +35,11 @@ void  print_operation(int *operation)
     else if(operation[i] == 8)
       write(1, "rr\n", 3);
     else if(operation[i] == 9)
-      write(1, "rra\n", 3);
+      write(1, "rra\n", 4);
     else if(operation[i] == 10)
-      write(1, "rrb\n", 3);
+      write(1, "rrb\n", 4);
     else if(operation[i] == 11)
-      write(1, "rrr\n", 3);
+      write(1, "rrr\n", 4);
     i++;
 
   }

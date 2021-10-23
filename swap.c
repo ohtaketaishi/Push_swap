@@ -4,7 +4,7 @@
 
 void swap_a(t_list *head_a, int *operation)
 {
-    if (ft_lstsize(head_a) <= 2)
+    if (ft_lstsize(head_a) <= 1)
         return;
     t_list *node1;
     t_list *node2;
@@ -19,7 +19,7 @@ void swap_a(t_list *head_a, int *operation)
 
 void swap_b(t_list *head_b, int *operation)
 {
-    if (ft_lstsize(head_b) <= 2)
+    if (ft_lstsize(head_b) <= 1)
         return;
     t_list *node1;
     t_list *node2;

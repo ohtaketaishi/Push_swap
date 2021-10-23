@@ -7,16 +7,16 @@ int *change_array(t_list  *head)
   int i;
   t_list  *p;
 
-  i = 0;
   p = head->next;
+  i = 0;
   array = (int *)malloc((ft_lstsize(head)) * sizeof(int));
 
-  while(p->next != head)
+  while(p != head)
   {
-    array[i++] = p->value;
+    array[i] = p->value;
     p = p->next;
+    i++;
   }
-  array[i] = p->value;
   return (array);
 }
 

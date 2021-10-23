@@ -70,6 +70,13 @@ int check_num(int argc, char *argv[]);
 int check_int(char *str);
 int check_dup(t_list *head_a);
 int argv_to_lst(t_list *head_a, t_list *head_b, char *argv[], int argc);
+//six_rule_sort.c
+void    six_num3_sort(t_list *head_a, t_list *head_b, int *operation);
+void  six_rule_sort(t_list *head_a, t_list *head_b, int count, int *operation);
+void six_sort(t_list *head_a, t_list *head_b, int *operation);
+void five_sort(t_list *head_a, t_list *head_b, int *operation);
+void four_sort(t_list *head_a, t_list *head_b, int *operation);
+
 //main.c
 void show_lst(t_list *head_a, t_list *head_b);
 void show_struct(t_list *head_a, t_list *head_b);
