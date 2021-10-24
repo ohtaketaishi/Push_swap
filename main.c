@@ -69,7 +69,7 @@ int main(int argc, char *argv[])
     return(0);
   head_a = ft_init_head(head_a);
   head_b = ft_init_head(head_b);
-  operation = (int *)malloc(sizeof(int) * 10000);
+  operation = (int *)malloc(sizeof(int) * 100000);
   if (argc == 1 || !head_a || !head_b || !operation || check_num(argc, argv))
   {
     ft_lstfree(head_a);
@@ -78,7 +78,7 @@ int main(int argc, char *argv[])
     write(2, "ERROR\n", 6);
     return (-1);
   }
-  ft_bzero(operation, sizeof(int) * 10000);
+  ft_bzero(operation, sizeof(int) * 100000);
 
   if (argv_to_lst(head_a, head_b, argv, argc) || check_dup(head_a))
   {
