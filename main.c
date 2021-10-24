@@ -88,6 +88,8 @@ int main(int argc, char *argv[])
     write(2, "ERROR\n", 6);
     return(-1);
   }
+  if (check_sorted(head_a, head_b, operation))
+    return (0);
   //show_lst(head_a, head_b);
   sorting_start(head_a, head_b, operation);
   //system("leaks a.out");

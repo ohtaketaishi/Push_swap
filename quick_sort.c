@@ -99,7 +99,7 @@ int quick_sort(t_list *head_a, t_list *head_b, int *operation)
 
 void sorting_start(t_list *head_a, t_list *head_b, int *operation)
 {
-  int *answer_arrray;
+  int *answer_array;
   int count_a;
 
   if (ft_lstsize(head_a) <= 6)
@@ -107,7 +107,7 @@ void sorting_start(t_list *head_a, t_list *head_b, int *operation)
     six_rule_sort(head_a, head_b, ft_lstsize(head_a), operation);
     return;
   }
-  answer_arrray = bubble_sort(change_array(head_a), ft_lstsize(head_a));
+  answer_array = bubble_sort(change_array(head_a), ft_lstsize(head_a));
   //show_lst(head_a, head_b);
   count_a = half_a_to_b(head_a, head_b, operation);
   //show_lst(head_a, head_b);
@@ -120,5 +120,5 @@ void sorting_start(t_list *head_a, t_list *head_b, int *operation)
   //show_lst(head_a, head_b);
   ft_lstfree(head_a);
   ft_lstfree(head_b);
-  ft_free(operation, answer_arrray, NULL);
+  ft_free(operation, answer_array, NULL);
 }

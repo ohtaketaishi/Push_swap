@@ -42,7 +42,7 @@ int check_int(char *str)
       sign = -1;
     str++;
   }
-  if (*str == '0')
+  if ((*str == '0' && *(str+1) != '\0') || (*str == '0' && sign == -1))
     return(1);
 	while (*str)
 	{
@@ -94,5 +94,33 @@ int argv_to_lst(t_list *head_a, t_list *head_b, char *argv[], int argc)
     push(head_a, p);
     i--;
   }
+  return (0);
+}
+
+int check_sorted(t_list *head_a, t_list *head_b, int *operation)
+{
+  int i;
+  int count;
+  int *answer_array;
+  int *a_array;
+
+  i = 0;
+  count = 0;
+  a_array = change_array(head_a);
+  answer_array = bubble_sort(change_array(head_a), ft_lstsize(head_a));
+  while(i != ft_lstsize(head_a))
+  {
+    if (answer_array[i] == a_array[i])
+      count++;
+    i++;
+  }
+  if (count == ft_lstsize(head_a))
+  {
+    ft_lstfree(head_a);
+    ft_lstfree(head_b);
+    ft_free(operation, a_array, answer_array);
+    return (1);
+  }
+  ft_free(a_array, answer_array, NULL);
   return (0);
 }

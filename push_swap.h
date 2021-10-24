@@ -65,11 +65,12 @@ void    sort_213(t_list *head_a, t_list *head_b, int *operation);
 //operation.c
 void  add_operation(int *operation, int num);
 void  print_operation(int *operation);
-//check_and_branch.c
+//change_and_check.c
 int check_num(int argc, char *argv[]);
 int check_int(char *str);
 int check_dup(t_list *head_a);
 int argv_to_lst(t_list *head_a, t_list *head_b, char *argv[], int argc);
+int check_sorted(t_list *head_a, t_list *head_b, int *operation);
 //six_rule_sort.c
 void    six_num3_sort(t_list *head_a, t_list *head_b, int *operation);
 void  six_rule_sort(t_list *head_a, t_list *head_b, int count, int *operation);
