@@ -4,8 +4,7 @@
 t_list  *ft_init_head(t_list *head)
 {
   head = (t_list *)malloc(sizeof(t_list));
-  if (!head)
-    return (NULL);
+  malloc_check(head);
   head->value = 0;
   head->next = head;
   head->prev = head;
@@ -42,8 +41,7 @@ t_list *create_node(int value)
 {
     t_list *node;
     node = (t_list *)malloc(sizeof(t_list));
-    if (!node)
-        return(NULL);
+    malloc_check(node);
     node->value = value;
     node->next = NULL;
     node->prev = NULL;

@@ -10,7 +10,7 @@ int *change_array(t_list  *head)
   p = head->next;
   i = 0;
   array = (int *)malloc((ft_lstsize(head)) * sizeof(int));
-
+  malloc_check(array);
   while(p != head)
   {
     array[i] = p->value;

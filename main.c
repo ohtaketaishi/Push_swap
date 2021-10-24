@@ -57,41 +57,26 @@ void show_struct(t_list *head_a, t_list *head_b)
 
 int main(int argc, char *argv[])
 {
-  //初期化
-  //==//==//==//==//==//==//==//==//==//==
-  //head_a head_bを確保してhead_aを引数で初期化
-  //head->引数1->引数2->引数3
   t_list *head_a;
   t_list *head_b;
-  int *operation;
+  t_list *head_o;
 
   if (argc == 1)
     return(0);
   head_a = ft_init_head(head_a);
   head_b = ft_init_head(head_b);
-  operation = (int *)malloc(sizeof(int) * 100000);
-  if (argc == 1 || !head_a || !head_b || !operation || check_num(argc, argv))
-  {
-    ft_lstfree(head_a);
-    ft_lstfree(head_b);
-    ft_free(operation, NULL, NULL);
-    write(2, "ERROR\n", 6);
-    return (-1);
-  }
-  ft_bzero(operation, sizeof(int) * 100000);
+  head_o = ft_init_head(head_o);
 
-  if (argv_to_lst(head_a, head_b, argv, argc) || check_dup(head_a))
+  if (check_num(argc, argv) || argv_to_lst(head_a, head_b, argv, argc) || check_dup(head_a))
   {
-    ft_free(operation, NULL, NULL);
-    ft_lstfree(head_a);
-    ft_lstfree(head_b);
+    ft_3lstfree(head_a, head_b, head_o);
     write(2, "ERROR\n", 6);
     return(-1);
   }
-  if (check_sorted(head_a, head_b, operation))
+  if (check_sorted(head_a, head_b, head_o))
     return (0);
   //show_lst(head_a, head_b);
-  sorting_start(head_a, head_b, operation);
-  //system("leaks a.out");
+  sorting_start(head_a, head_b, head_o);
+  system("leaks a.out");
   return (0);
 }

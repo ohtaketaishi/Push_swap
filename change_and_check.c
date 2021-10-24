@@ -89,15 +89,13 @@ int argv_to_lst(t_list *head_a, t_list *head_b, char *argv[], int argc)
   while (i)
   {
     p = create_node(ft_atoi(argv[i]));
-    if (!p)
-      return(1);
     push(head_a, p);
     i--;
   }
   return (0);
 }
 
-int check_sorted(t_list *head_a, t_list *head_b, int *operation)
+int check_sorted(t_list *head_a, t_list *head_b, t_list *head_o)
 {
   int i;
   int count;
@@ -116,11 +114,10 @@ int check_sorted(t_list *head_a, t_list *head_b, int *operation)
   }
   if (count == ft_lstsize(head_a))
   {
-    ft_lstfree(head_a);
-    ft_lstfree(head_b);
-    ft_free(operation, a_array, answer_array);
+    ft_3lstfree(head_a, head_b, head_o);
+    ft_3free(a_array, answer_array, NULL);
     return (1);
   }
-  ft_free(a_array, answer_array, NULL);
+  ft_3free(a_array, answer_array, NULL);
   return (0);
 }
