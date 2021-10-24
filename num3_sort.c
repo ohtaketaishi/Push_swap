@@ -27,7 +27,8 @@ void    sort_312(t_list  *head_a, t_list *head_b, int *operation)
 void    sort_132(t_list *head_a, t_list *head_b, int *operation)
 {
     push_a(head_a, head_b, operation);
-    rrotate(head_a, head_b, operation);
+    rotate_a(head_a, operation);
+    rotate_b(head_b, operation);
     push_a(head_a, head_b, operation);
     rotate_a(head_a, operation);
     push_a(head_a, head_b, operation);

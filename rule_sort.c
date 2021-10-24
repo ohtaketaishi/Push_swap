@@ -15,7 +15,7 @@ void    num3_sort(t_list *head_a, t_list *head_b, int *operation)
     if(node1 < node2 && node2 < node3)
         sort_123(head_a, head_b, operation);
     //3 2 1
-    if(node1 > node2 && node2 > node1)
+    if(node1 > node2 && node2 > node3)
         sort_321(head_a, head_b, operation);
     //3 1 2
     if(node1 > node2 && node2 < node3 && node3 < node1)

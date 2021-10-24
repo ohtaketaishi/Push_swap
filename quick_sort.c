@@ -83,18 +83,16 @@ int quick_sort(t_list *head_a, t_list *head_b, int *operation)
   if (is_rule_num <= 3)
   {
     rule_sort(head_a, head_b, is_rule_num, operation);
-    show_lst(head_a, head_b);
+    //show_lst(head_a, head_b);
     return (1);
   }
   last_num = half_b_to_a(head_a, head_b, operation);
-  show_lst(head_a, head_b);
+  //show_lst(head_a, head_b);
   quick_sort(head_a, head_b, operation);
-  show_lst(head_a, head_b);
   //bは空
   count_a_to_b(head_a, head_b, last_num, operation);
-  show_lst(head_a, head_b);
+  //show_lst(head_a, head_b);
   quick_sort(head_a, head_b, operation);
-  show_lst(head_a, head_b);
 
   return(1);
 }
@@ -110,18 +108,16 @@ void sorting_start(t_list *head_a, t_list *head_b, int *operation)
     return;
   }
   answer_arrray = bubble_sort(change_array(head_a), ft_lstsize(head_a));
-  show_lst(head_a, head_b);
+  //show_lst(head_a, head_b);
   count_a = half_a_to_b(head_a, head_b, operation);
-  show_lst(head_a, head_b);
+  //show_lst(head_a, head_b);
   quick_sort(head_a, head_b, operation);
-  show_lst(head_a, head_b);
   count_a_to_b(head_a, head_b, ft_lstsize(head_a) - count_a, operation);
-  show_lst(head_a, head_b);
+  //show_lst(head_a, head_b);
   quick_sort(head_a, head_b, operation);
-  show_lst(head_a, head_b);
- // puts("\n");
+  //puts("\n");
   print_operation(operation);
-  show_lst(head_a, head_b);
+  //show_lst(head_a, head_b);
   ft_lstfree(head_a);
   ft_lstfree(head_b);
   ft_free(operation, answer_arrray, NULL);
