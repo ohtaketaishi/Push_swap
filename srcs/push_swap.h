@@ -6,7 +6,7 @@
 /*   By: otaishi <otaishi@student.42tokyo.j>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 17:47:34 by otaishi           #+#    #+#             */
-/*   Updated: 2021/10/25 17:47:36 by otaishi          ###   ########.fr       */
+/*   Updated: 2021/10/25 21:27:48 by otaishi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,11 +55,11 @@ t_list			*ft_init_head(void);
 int				ft_lstsize(t_list *head);
 t_list			*search_tail(t_list *head);
 t_list			*create_node(int value);
+//util2.c
 void			push(t_list *head, t_list *node);
 void			push_tail(t_list *head, t_list *node);
 t_list			*pop(t_list *head);
 t_list			*pop_tail(t_list *head);
-//util2.c
 //utils3.c
 int				*change_array(t_list *head);
 void			bubble_swap(int *x, int *y);
@@ -79,8 +79,8 @@ void			sort_132(t_list *head_a, t_list *head_b, t_list *head_o);
 void			sort_231(t_list *head_a, t_list *head_b, t_list *head_o);
 void			sort_213(t_list *head_a, t_list *head_b, t_list *head_o);
 //quick_sort.c
-int				half_a_to_b(t_list *head_a, t_list *head_b, t_list *head_o);
-int				half_b_to_a(t_list *head_a, t_list *head_b, t_list *head_o);
+int				half_a_to_b(t_list *head_a, t_list *head_b, t_list *head_o, int len_a);
+int				half_b_to_a(t_list *head_a, t_list *head_b, t_list *head_o, int len_b);
 int				quick_sort(t_list *head_a, t_list *head_b, t_list *head_o);
 void			count_a_to_b(t_list *head_a,
 					t_list *head_b, int count, t_list *head_o);
@@ -109,5 +109,5 @@ void			malloc_check(void *p);
 //main.c
 void			show_lst(t_list *head_a, t_list *head_b);
 void			show_struct(t_list *head_a, t_list *head_b);
-
+void			test(t_list *head_a, t_list *head_b);
 #endif

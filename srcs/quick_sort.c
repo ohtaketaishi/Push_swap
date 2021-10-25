@@ -6,24 +6,26 @@
 /*   By: otaishi <otaishi@student.42tokyo.j>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 17:47:53 by otaishi           #+#    #+#             */
-/*   Updated: 2021/10/25 18:33:58 by otaishi          ###   ########.fr       */
+/*   Updated: 2021/10/26 00:16:25 by otaishi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	half_a_to_b(t_list *head_a, t_list *head_b, t_list *head_o)
+int	half_a_to_b(t_list *head_a, t_list *head_b, t_list *head_o, int len_a)
 {
 	int		*array;
-	t_list	*p;
+	int		median;
 	int		count;
+	t_list	*p;
 
 	array = bubble_sort(change_array(head_a), ft_lstsize(head_a));
-	p = head_a->next;
+	median = calc_median(head_a, array);
 	count = 0;
-	while (p != head_a)
+	p = head_a->next;
+	while (len_a-- != 0)
 	{
-		if (p->value < calc_median(head_a, array))
+		if (p->value < median)
 		{
 			p = p->next;
 			push_b(head_a, head_b, head_o);
@@ -39,18 +41,20 @@ int	half_a_to_b(t_list *head_a, t_list *head_b, t_list *head_o)
 	return (count);
 }
 
-int	half_b_to_a(t_list *head_a, t_list *head_b, t_list *head_o)
+int	half_b_to_a(t_list *head_a, t_list *head_b, t_list *head_o, int len_b)
 {
 	int		*array;
-	t_list	*p;
+	int		median;
 	int		count;
+	t_list	*p;
 
 	array = bubble_sort(change_array(head_b), ft_lstsize(head_b));
-	p = head_b->next;
+	median = calc_median(head_b, array);
 	count = 0;
-	while (p != head_b)
+	p = head_b->next;
+	while (len_b-- != 0)
 	{
-		if (p->value < calc_median(head_b, array))
+		if (p->value < median)
 		{
 			p = p->next;
 			rotate_b(head_a, head_b, head_o);
@@ -88,7 +92,7 @@ int	quick_sort(t_list *head_a, t_list *head_b, t_list *head_o)
 		rule_sort(head_a, head_b, is_rule_num, head_o);
 		return (1);
 	}
-	last_num = half_b_to_a(head_a, head_b, head_o);
+	last_num = half_b_to_a(head_a, head_b, head_o, ft_lstsize(head_b));
 	quick_sort(head_a, head_b, head_o);
 	count_a_to_b(head_a, head_b, last_num, head_o);
 	quick_sort(head_a, head_b, head_o);
@@ -106,11 +110,13 @@ void	sorting_start(t_list *head_a, t_list *head_b, t_list *head_o)
 		return ;
 	}
 	answer_array = bubble_sort(change_array(head_a), ft_lstsize(head_a));
-	count_a = half_a_to_b(head_a, head_b, head_o);
+	count_a = half_a_to_b(head_a, head_b, head_o, ft_lstsize(head_a));
 	quick_sort(head_a, head_b, head_o);
 	count_a_to_b(head_a, head_b, ft_lstsize(head_a) - count_a, head_o);
 	quick_sort(head_a, head_b, head_o);
+	//show_lst(head_a, head_b);
 	print_head_o(head_o);
+	//show_lst(head_a, head_b);
 	ft_3lstfree(head_a, head_b, head_o);
 	ft_3free(answer_array, NULL, NULL);
 }

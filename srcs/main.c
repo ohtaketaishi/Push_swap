@@ -6,33 +6,33 @@
 /*   By: otaishi <otaishi@student.42tokyo.j>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 17:02:56 by otaishi           #+#    #+#             */
-/*   Updated: 2021/10/25 18:15:36 by otaishi          ###   ########.fr       */
+/*   Updated: 2021/10/25 21:35:58 by otaishi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-//void	show_lst(t_list *head_a, t_list *head_b)
-//{
-//	t_list	*pa;
-//	t_list	*pb;
-//
-//	pa = head_a;
-//	pb = head_b;
-//	printf("\n\n//==//== a //==//==\n");
-//	while (pa->next != head_a)
-//	{
-//		pa = pa->next;
-//		printf("%d, ", pa->value);
-//	}
-//	printf("\n//==//== b //==//==\n");
-//	while (pb->next != head_b)
-//	{
-//		pb = pb->next;
-//		printf("%d, ", pb->value);
-//	}
-//	puts("\n");
-//}
+void	show_lst(t_list *head_a, t_list *head_b)
+{
+	t_list	*pa;
+	t_list	*pb;
+
+	pa = head_a;
+	pb = head_b;
+	printf("\n\n//==//== a //==//==\n");
+	while (pa->next != head_a)
+	{
+		pa = pa->next;
+		printf("%d, ", pa->value);
+	}
+	printf("\n//==//== b //==//==\n");
+	while (pb->next != head_b)
+	{
+		pb = pb->next;
+		printf("%d, ", pb->value);
+	}
+	puts("\n");
+}
 //
 //void	show_struct(t_list *head_a, t_list *head_b)
 //{
@@ -86,6 +86,28 @@ int	main(int argc, char *argv[])
 	if (check_sorted(head_a, head_b, head_o))
 		return (0);
 	sorting_start(head_a, head_b, head_o);
-	system("leaks a.out");
+	//system("leaks a.out");
 	return (0);
 }
+
+//void test(t_list *head_a, t_list *head_b)
+//{
+//	push(head_a, create_node(1));
+//	push(head_a, create_node(2));
+//	push(head_a, create_node(3));
+//	puts("create_node & push\n");
+//	puts("ex: 3 2 1\n");
+//	show_lst(head_a, head_b);
+//
+//	push(head_b, pop(head_a));
+//	puts("pop\n");
+//	puts("ex: 2 1\n");
+//	puts("ex: 3\n");
+//	show_lst(head_a, head_b);
+//
+//	push_tail(head_a, pop(head_b));
+//	puts("push_tail\n");
+//	puts("ex: 2 1 3\n");
+//	puts("ex: \n");
+//	show_lst(head_a, head_b);
+//}
