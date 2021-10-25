@@ -6,7 +6,7 @@
 /*   By: otaishi <otaishi@student.42tokyo.j>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 17:47:53 by otaishi           #+#    #+#             */
-/*   Updated: 2021/10/26 00:16:25 by otaishi          ###   ########.fr       */
+/*   Updated: 2021/10/26 02:07:11 by ootaketai        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,9 +114,7 @@ void	sorting_start(t_list *head_a, t_list *head_b, t_list *head_o)
 	quick_sort(head_a, head_b, head_o);
 	count_a_to_b(head_a, head_b, ft_lstsize(head_a) - count_a, head_o);
 	quick_sort(head_a, head_b, head_o);
-	//show_lst(head_a, head_b);
 	print_head_o(head_o);
-	//show_lst(head_a, head_b);
 	ft_3lstfree(head_a, head_b, head_o);
 	ft_3free(answer_array, NULL, NULL);
 }

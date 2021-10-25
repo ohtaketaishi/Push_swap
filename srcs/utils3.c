@@ -6,7 +6,7 @@
 /*   By: otaishi <otaishi@student.42tokyo.j>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 18:11:52 by otaishi           #+#    #+#             */
-/*   Updated: 2021/10/25 22:04:49 by otaishi          ###   ########.fr       */
+/*   Updated: 2021/10/26 02:14:46 by ootaketai        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	*bubble_sort(int array[], int array_size)
 {
 	int	i;
 	int	j;
-	
+
 	i = 0;
 	while (i < array_size - 1)
 	{

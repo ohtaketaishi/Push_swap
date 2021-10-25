@@ -6,7 +6,7 @@
 /*   By: otaishi <otaishi@student.42tokyo.j>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 17:47:34 by otaishi           #+#    #+#             */
-/*   Updated: 2021/10/25 21:27:48 by otaishi          ###   ########.fr       */
+/*   Updated: 2021/10/26 02:13:54 by ootaketai        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,10 @@ void			sort_132(t_list *head_a, t_list *head_b, t_list *head_o);
 void			sort_231(t_list *head_a, t_list *head_b, t_list *head_o);
 void			sort_213(t_list *head_a, t_list *head_b, t_list *head_o);
 //quick_sort.c
-int				half_a_to_b(t_list *head_a, t_list *head_b, t_list *head_o, int len_a);
-int				half_b_to_a(t_list *head_a, t_list *head_b, t_list *head_o, int len_b);
+int				half_a_to_b(t_list *head_a,
+					t_list *head_b, t_list *head_o, int len_a);
+int				half_b_to_a(t_list *head_a,
+					t_list *head_b, t_list *head_o, int len_b);
 int				quick_sort(t_list *head_a, t_list *head_b, t_list *head_o);
 void			count_a_to_b(t_list *head_a,
 					t_list *head_b, int count, t_list *head_o);
@@ -94,6 +96,7 @@ void			five_sort(t_list *head_a, t_list *head_b, t_list *head_o);
 void			four_sort(t_list *head_a, t_list *head_b, t_list *head_o);
 //operation.c
 void			print_head_o(t_list *head_o);
+void			print_sub(int p_value);
 //error_check.c
 int				check_num(int argc, char *argv[]);
 int				check_int(char *str);
