@@ -6,7 +6,7 @@
 /*   By: otaishi <otaishi@student.42tokyo.j>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 16:56:39 by otaishi           #+#    #+#             */
-/*   Updated: 2021/10/25 17:01:02 by otaishi          ###   ########.fr       */
+/*   Updated: 2021/10/26 10:48:22 by otaishi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	malloc_check(void *p)
 {
 	if (!p)
 	{
-		write(2, "ERROR\n", 6);
+		write(2, "Error\n", 6);
 		exit(1);
 	}
 }
