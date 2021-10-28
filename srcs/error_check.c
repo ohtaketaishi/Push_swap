@@ -6,7 +6,7 @@
 /*   By: otaishi <otaishi@student.42tokyo.j>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 16:56:11 by otaishi           #+#    #+#             */
-/*   Updated: 2021/10/26 10:48:02 by otaishi          ###   ########.fr       */
+/*   Updated: 2021/10/28 11:46:14 by ootaketai        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ int	check_int(char *str)
 		if (*str == '-')
 			sign = -1;
 		str++;
+		if (!*str)
+			return (1);
 	}
 	if ((*str == '0' && *(str + 1) != '\0') || (*str == '0' && sign == -1))
 		return (1);
