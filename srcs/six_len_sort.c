@@ -6,7 +6,7 @@
 /*   By: otaishi <otaishi@student.42tokyo.j>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 17:59:33 by otaishi           #+#    #+#             */
-/*   Updated: 2021/10/25 18:02:23 by otaishi          ###   ########.fr       */
+/*   Updated: 2021/11/02 15:52:37 by ootaketai        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,8 @@ void	six_num3_sort(t_list *head_a, t_list *head_b, t_list *head_o)
 
 void	six_rule_sort(t_list *head_a, t_list *head_b, int count, t_list *head_o)
 {
-	if (count == 6)
+	if (count == 6 || count == 5 || count == 4)
 		six_sort(head_a, head_b, head_o);
-	else if (count == 5)
-		five_sort(head_a, head_b, head_o);
-	else if (count == 4)
-		four_sort(head_a, head_b, head_o);
 	else if (count == 3)
 		six_num3_sort(head_a, head_b, head_o);
 	else if (count == 2 && head_a->next->value > head_a->next->next->value)
@@ -57,69 +53,63 @@ void	six_rule_sort(t_list *head_a, t_list *head_b, int count, t_list *head_o)
 
 void	six_sort(t_list *head_a, t_list *head_b, t_list *head_o)
 {
-	int	*answer_array;
-	int	count;
-
-	answer_array = bubble_sort(change_array(head_a), ft_lstsize(head_a));
-	count = 0;
-	while (count != 3)
-	{
-		if (head_a->next->value == answer_array[count])
-		{
-			push_b(head_a, head_b, head_o);
-			count++;
-		}
-		rotate_a(head_a, head_b, head_o);
-	}
+	high_low(head_a, head_b, head_o);
 	if (ft_lstsize(head_a) == 3)
 		six_num3_sort(head_a, head_b, head_o);
-	push_a(head_a, head_b, head_o);
-	push_a(head_a, head_b, head_o);
-	push_a(head_a, head_b, head_o);
+	while (ft_lstsize(head_b))
+		push_a(head_a, head_b, head_o);
+}
+
+void	high_low(t_list *head_a, t_list *head_b, t_list *head_o)
+{
+	int		count;
+	int		*answer_array;
+
+	count = 0;
+	answer_array = bubble_sort(change_array(head_a), ft_lstsize(head_a));
+	if (check_high_low(head_a, answer_array))
+	{
+		while (ft_lstsize(head_a) > 3)
+		{
+			if (head_a->next->value == answer_array[count])
+			{
+				push_b(head_a, head_b, head_o);
+				count++;
+			}
+			else
+				rotate_a(head_a, head_b, head_o);
+		}
+	}
+	else
+	{
+		while (ft_lstsize(head_a) > 3)
+		{
+			if (!(head_a->next->value == answer_array[count]))
+				reverse_rotate_a(head_a, head_b, head_o);
+			else
+			{
+				push_b(head_a, head_b, head_o);
+				count++;
+			}
+		}
+	}
+
 	ft_3free(answer_array, NULL, NULL);
 }
 
-void	five_sort(t_list *head_a, t_list *head_b, t_list *head_o)
+int		check_high_low(t_list *head_a, int *answer_array)
 {
-	int	*answer_array;
-	int	count;
+	int		i;
+	t_list	*p;
 
-	answer_array = bubble_sort(change_array(head_a), ft_lstsize(head_a));
-	count = 0;
-	while (count != 2)
+	i = 0;
+	p = head_a->next;
+	while (p->next != head_a)
 	{
-		if (head_a->next->value == answer_array[count])
-		{
-			push_b(head_a, head_b, head_o);
-			count++;
-		}
-		rotate_a(head_a, head_b, head_o);
+		if (( p->value == answer_array[0]) && i + 1 <= (ft_lstsize(head_a) + 1) / 2)
+			return (1);
+		i++;
+		p = p->next;
 	}
-	if (ft_lstsize(head_a) == 3)
-		six_num3_sort(head_a, head_b, head_o);
-	push_a(head_a, head_b, head_o);
-	push_a(head_a, head_b, head_o);
-	ft_3free(answer_array, NULL, NULL);
-}
-
-void	four_sort(t_list *head_a, t_list *head_b, t_list *head_o)
-{
-	int	*answer_array;
-	int	count;
-
-	answer_array = bubble_sort(change_array(head_a), ft_lstsize(head_a));
-	count = 0;
-	while (count != 1)
-	{
-		if (head_a->next->value == answer_array[count])
-		{
-			push_b(head_a, head_b, head_o);
-			count++;
-		}
-		rotate_a(head_a, head_b, head_o);
-	}
-	if (ft_lstsize(head_a) == 3)
-		six_num3_sort(head_a, head_b, head_o);
-	push_a(head_a, head_b, head_o);
-	ft_3free(answer_array, NULL, NULL);
+	return (0);
 }

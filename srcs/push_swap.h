@@ -6,7 +6,7 @@
 /*   By: otaishi <otaishi@student.42tokyo.j>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 17:47:34 by otaishi           #+#    #+#             */
-/*   Updated: 2021/10/26 02:13:54 by ootaketai        ###   ########.fr       */
+/*   Updated: 2021/11/04 09:52:23 by ootaketai        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ t_list			*ft_init_head(void);
 int				ft_lstsize(t_list *head);
 t_list			*search_tail(t_list *head);
 t_list			*create_node(int value);
+void			del(t_list *node);
 //util2.c
 void			push(t_list *head, t_list *node);
 void			push_tail(t_list *head, t_list *node);
@@ -92,11 +93,13 @@ void			six_num3_sort(t_list *head_a, t_list *head_b, t_list *head_o);
 void			six_rule_sort(t_list *head_a,
 					t_list *head_b, int count, t_list *head_o);
 void			six_sort(t_list *head_a, t_list *head_b, t_list *head_o);
-void			five_sort(t_list *head_a, t_list *head_b, t_list *head_o);
-void			four_sort(t_list *head_a, t_list *head_b, t_list *head_o);
+void	high_low(t_list *head_a, t_list *head_b, t_list *head_o);
+int		check_high_low(t_list *head_a, int *answer_array);
 //operation.c
 void			print_head_o(t_list *head_o);
 void			print_sub(int p_value);
+void			optimize_w(t_list *head_o);
+void			optimize_del(t_list *head_o);
 //error_check.c
 int				check_num(int argc, char *argv[]);
 int				check_int(char *str);

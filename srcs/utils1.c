@@ -6,7 +6,7 @@
 /*   By: otaishi <otaishi@student.42tokyo.j>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 18:06:22 by otaishi           #+#    #+#             */
-/*   Updated: 2021/10/25 19:44:22 by otaishi          ###   ########.fr       */
+/*   Updated: 2021/11/04 09:51:57 by ootaketai        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,16 @@ t_list	*create_node(int value)
 	node->next = NULL;
 	node->prev = NULL;
 	return (node);
+}
+
+void	del(t_list *node)
+{
+	t_list	*p1;
+	t_list	*p2;
+
+	p1 = node->prev;
+	p2 = node->next;
+	p1->next = p2;
+	p2->prev = p1;
+	ft_3free(node, NULL, NULL);
 }
