@@ -6,7 +6,7 @@
 /*   By: otaishi <otaishi@student.42tokyo.j>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 16:56:11 by otaishi           #+#    #+#             */
-/*   Updated: 2021/10/28 11:46:14 by ootaketai        ###   ########.fr       */
+/*   Updated: 2021/11/18 00:55:34 by ootaketai        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,6 @@ int	check_int(char *str)
 
 	sign = 1;
 	result = 0;
-	while (*str == '\t' || *str == '\n' || *str == '\v'
-		|| *str == '\f' || *str == '\r' || *str == ' ')
-		str++;
 	if (*str == '+' || *str == '-')
 	{
 		if (*str == '-')

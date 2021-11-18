@@ -6,7 +6,7 @@
 /*   By: otaishi <otaishi@student.42tokyo.j>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 17:47:34 by otaishi           #+#    #+#             */
-/*   Updated: 2021/11/04 09:52:23 by ootaketai        ###   ########.fr       */
+/*   Updated: 2021/11/18 00:58:47 by ootaketai        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void			sswap(t_list *head_a, t_list *head_b, t_list *head_o);
 //push.c
 void			push_a(t_list *head_a, t_list *head_b, t_list *head_o);
 void			push_b(t_list *head_a, t_list *head_b, t_list *head_o);
+int				push_b_plus(t_list *head_a, t_list *head_b, t_list *head_o);
 //rotate.c
 void			rotate_a(t_list *head_a, t_list *head_b, t_list *head_o);
 void			rotate_b(t_list *head_a, t_list *head_b, t_list *head_o);
@@ -93,8 +94,9 @@ void			six_num3_sort(t_list *head_a, t_list *head_b, t_list *head_o);
 void			six_rule_sort(t_list *head_a,
 					t_list *head_b, int count, t_list *head_o);
 void			six_sort(t_list *head_a, t_list *head_b, t_list *head_o);
-void	high_low(t_list *head_a, t_list *head_b, t_list *head_o);
-int		check_high_low(t_list *head_a, int *answer_array);
+void			high_low(t_list *head_a, t_list *head_b, t_list *head_o,
+					int *answer_array);
+int				check_high_low(t_list *head_a, int min);
 //operation.c
 void			print_head_o(t_list *head_o);
 void			print_sub(int p_value);
@@ -116,4 +118,5 @@ void			malloc_check(void *p);
 void			show_lst(t_list *head_a, t_list *head_b);
 void			show_struct(t_list *head_a, t_list *head_b);
 void			test(t_list *head_a, t_list *head_b);
+
 #endif

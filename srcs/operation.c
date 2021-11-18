@@ -6,7 +6,7 @@
 /*   By: otaishi <otaishi@student.42tokyo.j>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 17:14:28 by otaishi           #+#    #+#             */
-/*   Updated: 2021/11/04 09:53:06 by ootaketai        ###   ########.fr       */
+/*   Updated: 2021/11/17 22:45:43 by ootaketai        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	optimize_w(t_list *head_o)
 	int		tmp;
 
 	p = head_o->next;
-	while(p != head_o)
+	while (p != head_o)
 	{
 		if ((tmp == 1 && p->value == 2) || (tmp == 2 && p->value == 1))
 		{
@@ -84,26 +84,25 @@ void	optimize_del(t_list *head_o)
 {
 	t_list	*p;
 	int		tmp;
+	int		flag;
 
+	tmp = 0;
 	p = head_o->next;
-	while(p != head_o)
+	while (p != head_o)
 	{
-		if ((tmp == 4 && p->value == 5) || (tmp == 5 && p->value == 4))
-		{
-			del(p->prev);
-			del(p);
-		}
-		if ((tmp == 6 && p->value == 9) || (tmp == 9 && p->value == 6))
-		{
-			del(p->prev);
-			del(p);
-		}
-		if ((tmp == 7 && p->value == 10) || (tmp == 10 && p->value == 7))
-		{
-			del(p->prev);
-			del(p);
-		}
-		tmp = p->value;
+		flag = 1;
+		if ((tmp == 4 && p->value == 5) || (tmp == 5 && p->value == 4)
+			|| (tmp == 6 && p->value == 9) || (tmp == 9 && p->value == 6)
+			|| (tmp == 7 && p->value == 10) || (tmp == 10 && p->value == 7))
+			flag = 0;
 		p = p->next;
+		if (flag)
+			tmp = p->prev->value;
+		else
+		{
+			tmp = p->prev->prev->prev->value;
+			del(p->prev->prev);
+			del(p->prev);
+		}
 	}
 }
